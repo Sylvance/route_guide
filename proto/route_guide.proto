@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package route_guide;
+
+service DirectionsService {
+    rpc direct_it(DirectionsRequest) returns (DirectionsResponse) {}
+}
+
+message DirectionsRequest {
+    string current_location = 1;
+    string target_location = 2;
+    string means_of_travel = 3;
+}
+
+message DirectionsResponse {
+    string directions = 1;
+    string approximate_time_of_travel = 2;
+    int32 approximate_distance_in_kms = 3;
+}
