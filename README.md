@@ -19,22 +19,15 @@ the two. Check the `examples` folder for a working example.
 
 ### Server side service implementation
 
-1. Create the service in `directions_service.rb`:
+1. Create a `Gemfile` below then run `bundle` install:
 
 ```ruby
-require 'grpc'
-require 'route_guide'
+# frozen_string_literal: true
 
-class DirectionsService < RouteGuide::DirectionsService::Service
-  def direct_it(direction_req, _unused_call)
-    puts "Received direction request for #{direction_req}"
-    RouteGuide::DirectionsResponse.new(
-      directions: 'response',
-      approximate_time_of_travel_in_hrs: 4,
-      approximate_distance_in_kms: 30
-    )
-  end
-end
+source "https://rubygems.org"
+
+gem "grpc"
+gem "route_guide"
 ```
 
 2. Setup the gRPC server in `server.rb`:
@@ -42,9 +35,20 @@ end
 ```ruby
 #!/usr/bin/env ruby
 
-require 'rubygems'
+require 'grpc'
 require 'route_guide'
-require_relative 'directions_service'
+
+class DirectionsService < RouteGuide::DirectionsService::Service
+  def direct_it(direction_req, _unused_call)
+    puts "Received direction request for #{direction_req}"
+    # build response from object
+    RouteGuide::DirectionsResponse.new(
+      directions: 'response',
+      approximate_time_of_travel_in_hrs: 4,
+      approximate_distance_in_kms: 30
+    )
+  end
+end
 
 class RouteGuideServer
   class << self
@@ -55,8 +59,10 @@ class RouteGuideServer
     private
 
     def start_grpc_server
+      # create server
       @server = GRPC::RpcServer.new
       @server.add_http2_port("0.0.0.0:50052", :this_port_is_insecure)
+      # assign server to a grpc handler
       @server.handle(DirectionsService)
       @server.run_till_terminated
     end
@@ -83,12 +89,15 @@ require 'grpc'
 require 'route_guide'
 
 def test_single_call
+  # 1. connect to server service
   stub = RouteGuide::DirectionsService::Stub.new('0.0.0.0:50052', :this_channel_is_insecure)
+  # 2. build request object
   req = RouteGuide::DirectionsRequest.new(
     current_location: 'current_location',
     target_location: 'travel_location',
     means_of_travel: 'means_of_travel'
   )
+  # 3. call the remote method with request object as parameter
   resp_obj = stub.direct_it(req)
   puts "Response: #{resp_obj}"
 end
@@ -96,7 +105,11 @@ end
 test_single_call
 ```
 
-Then run the client in a separate terminal.
+2. Then run the client in a separate terminal. Run client with;
+
+```sh
+bundle exec client.rb
+```
 
 ## Development
 
