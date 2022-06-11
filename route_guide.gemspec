@@ -8,17 +8,17 @@ Gem::Specification.new do |spec|
   spec.authors = ["sylvance_theone"]
   spec.email = ["9350722+Sylvance@users.noreply.github.com"]
 
-  spec.summary = "Write a short summary, because RubyGems requires one."
-  spec.description = "Write a longer description or delete this line."
-  spec.homepage = "https://example.com"
+  spec.summary = "Gem that demonstrates how to use gRPC in ruby."
+  spec.description = "Gem that demonstrates how to use gRPC in ruby."
+  spec.homepage = "https://github.com/Sylvance/route_guide"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
-  spec.metadata["allowed_push_host"] = "https://example.com"
+  spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://example.com"
-  spec.metadata["changelog_uri"] = "https://example.com"
+  spec.metadata["source_code_uri"] = "https://github.com/Sylvance/route_guide"
+  spec.metadata["changelog_uri"] = "https://github.com/Sylvance/route_guide/blob/main/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
