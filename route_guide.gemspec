@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = "Gem that demonstrates how to use gRPC in ruby."
   spec.homepage = "https://github.com/Sylvance/route_guide"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 3.0.2"
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
