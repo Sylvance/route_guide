@@ -15,7 +15,7 @@ If bundler is not being used to manage dependencies, install the gem by executin
 ## Usage
 
 You need to implement a server and a client. Then you can use this gem to connect between
-the two.
+the two. Check the `examples` folder for a working example.
 
 ### Server side service implementation
 
@@ -29,9 +29,9 @@ class DirectionsService < RouteGuide::DirectionsService::Service
   def direct_it(direction_req, _unused_call)
     puts "Received direction request for #{direction_req}"
     RouteGuide::DirectionsResponse.new(
-      directions: response.direction,
-      approximate_time_of_travel_in_hrs: response.approximate_time_of_travel_in_hrs,
-      approximate_distance_in_kms: response.approximate_distance_in_kms
+      directions: 'response',
+      approximate_time_of_travel_in_hrs: 4,
+      approximate_distance_in_kms: 30
     )
   end
 end
