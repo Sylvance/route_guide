@@ -1,8 +1,7 @@
 PATH
   remote: .
   specs:
-    route_guide (0.1.0)
-      grpc
+    route_guide (0.1.1)
 
 GEM
   remote: https://rubygems.org/
@@ -53,6 +52,7 @@ PLATFORMS
   arm64-darwin-20
 
 DEPENDENCIES
+  grpc
   rake (~> 13.0)
   route_guide!
   rspec (~> 3.0)
