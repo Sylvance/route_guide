@@ -2,7 +2,7 @@
 # Source: route_guide.proto for package 'route_guide'
 
 require 'grpc'
-require 'route_guide_pb'
+require_relative 'route_guide_pb'
 
 module RouteGuide
   module DirectionsService
