@@ -75,7 +75,7 @@ RouteGuideServer.start
 3. Run server with;
 
 ```sh
-bundle exec server.rb
+ruby server.rb
 ```
 
 ### Client side 
@@ -108,7 +108,7 @@ test_single_call
 2. Then run the client in a separate terminal. Run client with;
 
 ```sh
-bundle exec client.rb
+ruby client.rb
 ```
 
 ## Development
