@@ -1,4 +1,7 @@
 AllCops:
+  Exclude:
+    - 'lib/route_guide/**/*'
+    - 'examples/**/*'
   TargetRubyVersion: 2.6
 
 Style/StringLiterals:
